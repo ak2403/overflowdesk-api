@@ -1,0 +1,96 @@
+{
+  "items": [
+    {
+      "tags": ["android", "unity-game-engine", "gradle", "build", "admob"],
+      "owner": {
+        "account_id": 30231943,
+        "reputation": 13,
+        "user_id": 23169220,
+        "user_type": "registered",
+        "profile_image": "https://lh3.googleusercontent.com/a/ACg8ocI5v6uqGw6eknWKU77eTNyMNhlxacUya54xqAhOurYRDuo=k-s256",
+        "display_name": "Sideron",
+        "link": "https://stackoverflow.com/users/23169220/sideron"
+      },
+      "is_answered": true,
+      "view_count": 484,
+      "answer_count": 2,
+      "score": 1,
+      "last_activity_date": 1720764866,
+      "creation_date": 1705026347,
+      "question_id": 77804040,
+      "content_license": "CC BY-SA 4.0",
+      "link": "https://stackoverflow.com/questions/77804040/what-missing-argument-gradle-in-settings-gradle",
+      "title": "What??? Missing argument &#39;Gradle&#39; in settings.gradle"
+    },
+    {
+      "tags": ["angular", "typescript", "forms"],
+      "owner": {
+        "account_id": 33998643,
+        "reputation": 1,
+        "user_id": 26333145,
+        "user_type": "registered",
+        "profile_image": "https://www.gravatar.com/avatar/34cbe22f6bcfcfcad0b3100c9a78232a?s=256&d=identicon&r=PG&f=y&so-version=2",
+        "display_name": "Saad dastgir",
+        "link": "https://stackoverflow.com/users/26333145/saad-dastgir"
+      },
+      "is_answered": false,
+      "view_count": 31,
+      "answer_count": 0,
+      "score": 0,
+      "last_activity_date": 1720764866,
+      "creation_date": 1720699525,
+      "last_edit_date": 1720764866,
+      "question_id": 78735417,
+      "content_license": "CC BY-SA 4.0",
+      "link": "https://stackoverflow.com/questions/78735417/angular-reactive-form-unique-identifier",
+      "title": "Angular Reactive Form Unique Identifier"
+    },
+    {
+      "tags": ["c#", "unity-game-engine"],
+      "owner": {
+        "account_id": 34019893,
+        "reputation": 1,
+        "user_id": 26344224,
+        "user_type": "registered",
+        "profile_image": "https://www.gravatar.com/avatar/5480d513d8c94309a16addae3bbd2bfc?s=256&d=identicon&r=PG&f=y&so-version=2",
+        "display_name": "Piyon Raj",
+        "link": "https://stackoverflow.com/users/26344224/piyon-raj"
+      },
+      "is_answered": false,
+      "view_count": 2,
+      "answer_count": 0,
+      "score": 0,
+      "last_activity_date": 1720764865,
+      "creation_date": 1720764865,
+      "question_id": 78738843,
+      "content_license": "CC BY-SA 4.0",
+      "link": "https://stackoverflow.com/questions/78738843/how-did-replay-game-dynamically-and-slow-motion",
+      "title": "how did replay game dynamically? and slow motion?"
+    },
+    {
+      "tags": ["c#", "json", "webapi"],
+      "owner": {
+        "account_id": 14033279,
+        "reputation": 31,
+        "user_id": 17156221,
+        "user_type": "registered",
+        "profile_image": "https://lh3.googleusercontent.com/a/AATXAJzfKjRh5-ZA-P4NsLvWLX8ljpsAk59Um9EcV-xD=k-s256",
+        "display_name": "Edison C",
+        "link": "https://stackoverflow.com/users/17156221/edison-c"
+      },
+      "is_answered": false,
+      "view_count": 2,
+      "answer_count": 0,
+      "score": 0,
+      "last_activity_date": 1720764860,
+      "creation_date": 1720764860,
+      "question_id": 78738842,
+      "content_license": "CC BY-SA 4.0",
+      "link": "https://stackoverflow.com/questions/78738842/multiple-json-property-name-on-property",
+      "title": "Multiple JSON Property name on property"
+    }
+  ],
+  "has_more": true,
+  "quota_max": 10000,
+  "quota_remaining": 9986
+}
