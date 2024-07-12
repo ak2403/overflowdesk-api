@@ -18,6 +18,9 @@ def base_url_withkey_for(params: str, key: str) -> str:
 
 
 def append_query_with_url(url: str, query_params: dict) -> str:
+    if not query_params:
+        return url
+
     query_params_keys = query_params.keys()
     query_list = []
 

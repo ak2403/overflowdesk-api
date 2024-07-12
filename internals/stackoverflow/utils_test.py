@@ -1,3 +1,5 @@
+import pytest
+
 from internals.stackoverflow.utils import (
     base_url_for,
     base_url_withkey_for,
@@ -17,13 +19,20 @@ def test_base_url_withkey_for():
     assert url == "https://api.stackexchange.com/2.3/example?key=sample"
 
 
-def test_append_query_with_url():
+test_values = [
+    (
+        {"filter": "withBody", "page": 1, "boolean": False},
+        "https://api.stackexchange.com/2.3/example?filter=withBody&page=1&boolean=false",
+    ),
+    ({}, "https://api.stackexchange.com/2.3/example"),
+]
+
+
+@pytest.mark.parametrize("query,expected", test_values)
+def test_append_query_with_url(query, expected):
     url = append_query_with_url(
         url=base_url_for(params="example"),
-        query_params={"filter": "withBody", "page": 1, "boolean": False},
+        query_params=query,
     )
 
-    assert (
-        url
-        == "https://api.stackexchange.com/2.3/example?filter=withBody&page=1&boolean=false"
-    )
+    assert url == expected
