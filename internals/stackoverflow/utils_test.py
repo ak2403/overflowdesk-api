@@ -1,10 +1,6 @@
 import pytest
 
-from internals.stackoverflow.utils import (
-    base_url_for,
-    base_url_withkey_for,
-    append_query_with_url,
-)
+from internals.stackoverflow.utils import base_url_for, supported_query_params
 
 
 def test_base_url_for():
@@ -13,26 +9,15 @@ def test_base_url_for():
     assert url == "https://api.stackexchange.com/2.3/example"
 
 
-def test_base_url_withkey_for():
-    url = base_url_withkey_for(params="example", key="sample")
-
-    assert url == "https://api.stackexchange.com/2.3/example?key=sample"
-
-
 test_values = [
-    (
-        {"filter": "withBody", "page": 1, "boolean": False},
-        "https://api.stackexchange.com/2.3/example?filter=withBody&page=1&boolean=false",
-    ),
-    ({}, "https://api.stackexchange.com/2.3/example"),
+    ({"key": "12345"}, {"key": "12345"}),
+    ({"key": "12345", "page": 1, "total": 123}, {"key": "12345", "page": 1}),
+    ({"key": "12345", "not": True}, {"key": "12345"}),
 ]
 
 
-@pytest.mark.parametrize("query,expected", test_values)
-def test_append_query_with_url(query, expected):
-    url = append_query_with_url(
-        url=base_url_for(params="example"),
-        query_params=query,
-    )
+@pytest.mark.parametrize("queries,expected", test_values)
+def test_supported_query_params(queries, expected):
+    queries = supported_query_params(query_params=queries)
 
-    assert url == expected
+    assert queries == expected

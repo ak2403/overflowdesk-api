@@ -1,8 +1,10 @@
+from typing import Dict, Union
+
 from internals.stackoverflow.constants import (
     STACKOVERFLOW_API_BASE_URL,
     STACKOVERFLOW_API_VERSION,
+    SUPPORTED_QUERIES,
 )
-from internals.helpers.convert import str_conversion
 
 
 def base_url_for(params: str) -> str:
@@ -11,20 +13,11 @@ def base_url_for(params: str) -> str:
     )
 
 
-def base_url_withkey_for(params: str, key: str) -> str:
-    base_url = base_url_for(params=params)
+def supported_query_params(query_params: Dict[str, Union[str, bool, int]]):
+    supported_params = {}
 
-    return "{}?key={}".format(base_url, key)
+    for key in query_params.keys():
+        if key in SUPPORTED_QUERIES:
+            supported_params[key] = query_params[key]
 
-
-def append_query_with_url(url: str, query_params: dict) -> str:
-    if not query_params:
-        return url
-
-    query_params_keys = query_params.keys()
-    query_list = []
-
-    for key in query_params_keys:
-        query_list.append("{}={}".format(key, str_conversion(value=query_params[key])))
-
-    return "{}?{}".format(url, "&".join(query_list))
+    return supported_params
