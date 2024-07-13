@@ -1,4 +1,0 @@
-STACKOVERFLOW_API_VERSION=2.3
-
-STACKOVERFLOW_API_BASE_URL='https://api.stackexchange.com'
-
