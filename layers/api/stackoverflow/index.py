@@ -9,12 +9,12 @@ class StackOverflowApi:
     def __init__(self, key) -> None:
         self.api_key = key
 
-    def fetch_questions(self, **kwargs) -> Union[QuestionsResponse, None]:
+    def fetch_questions(self, query_params: dict) -> Union[QuestionsResponse, None]:
 
         try:
             api_url_for_questions = base_url_for(params="questions")
 
-            queries = {"key": self.api_key, **kwargs}
+            queries = {"key": self.api_key, **query_params}
 
             questions_resp = get(
                 url=api_url_for_questions,

@@ -1,7 +1,10 @@
 import json
 
+from event import Event
+from adapters.questions import QuestionsAdapter
 
-def lambda_handler(event, context):
+
+def lambda_handler(event: Event, context):
     """Sample pure Lambda function
 
     Parameters
@@ -31,11 +34,14 @@ def lambda_handler(event, context):
 
     #     raise e
 
-    return {
-        "statusCode": 200,
-        "body": json.dumps(
-            {
-                "message": "list questions",
-            }
-        ),
-    }
+    questions_adapter = QuestionsAdapter(key="U4DMV*8nvpm3EOpvf69Rxw((")
+
+    try:
+        return {
+            "statusCode": 200,
+            "body": json.dumps(questions_adapter.fetch_all(query_params={})),
+        }
+    except Exception as e:
+        print(e)
+
+        return {"statusCode": 500, "body": "Internal error"}
