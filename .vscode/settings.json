@@ -1,0 +1,11 @@
+{
+  "python.analysis.extraPaths": ["./layers/api", "./layers/types"],
+  "yaml.customTags": [
+    "!GetAtt scalar",
+    "!GetAtt sequence",
+    "!Sub scalar",
+    "!Sub sequence",
+    "!Ref scalar",
+    "!Ref sequence"
+  ]
+}
