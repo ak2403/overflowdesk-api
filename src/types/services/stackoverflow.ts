@@ -2,11 +2,16 @@ export type QueryOptions = {
   filter?: string;
   key: string;
   order?: string;
-  site?: string;
+  site: string;
   sort?: string;
 };
 
-export type ApiProps = {
+export type ApiOptions = {
+  id?: string;
   type: string;
   url: string;
 };
+
+export enum StackOverflowApiType {
+  Questions = "questions",
+}

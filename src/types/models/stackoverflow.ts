@@ -1,31 +1,35 @@
 export type StackOverflowResponse<T> = {
-  items: T[];
   has_more: boolean;
+  items: T[];
   quota_max: number;
   quota_remaining: number;
 };
 
 export type Owner = {
   account_id: number;
+  display_name: string;
+  link: string;
+  profile_image: string;
   reputation: number;
   user_id: number;
   user_type: string;
-  profile_image: string;
-  display_name: string;
-  link: string;
 };
 
 export type StackOverflowQuestion = {
-  tags: string[];
-  owner: Owner;
-  is_answered: boolean;
-  view_count: number;
   answer_count: number;
-  score: number;
-  last_activity_date: number;
-  creation_date: number;
-  question_id: number;
   content_license: string;
+  creation_date: number;
+  is_answered: boolean;
+  last_activity_date: number;
   link: string;
+  owner: Owner;
+  question_id: number;
+  score: number;
+  tags: string[];
   title: string;
+  view_count: number;
+};
+
+export type StackOverflowQuestionDetail = StackOverflowQuestion & {
+  accepted_answer_id: string;
 };
