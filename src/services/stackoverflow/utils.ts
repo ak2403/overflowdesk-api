@@ -1,7 +1,22 @@
-import { ApiProps, QueryOptions } from "../../types/services/stackoverflow";
+import { ApiOptions, QueryOptions } from "../../types/services/stackoverflow";
 
-export const structApiUrl = (apiOptions: QueryOptions & ApiProps): string => {
-  const { url, type, ...queryOptions } = apiOptions;
+const structUrl = (apiOptions: ApiOptions): string => {
+  const { url, type, id } = apiOptions;
+
+  let urlString = `${url}/${type}`;
+
+  if (id) {
+    urlString += `/${id}`;
+  }
+
+  return urlString;
+};
+
+export const structApiUrl = (
+  apiOptions: ApiOptions,
+  queryOptions: QueryOptions
+): string => {
+  const primaryUrl = structUrl(apiOptions);
 
   const queryString = Object.keys(queryOptions)
     .map(
@@ -10,5 +25,5 @@ export const structApiUrl = (apiOptions: QueryOptions & ApiProps): string => {
     )
     .join("&");
 
-  return `${url}/${type}?${queryString}`;
+  return `${primaryUrl}?${queryString}`;
 };
