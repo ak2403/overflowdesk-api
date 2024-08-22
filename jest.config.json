@@ -1,0 +1,14 @@
+{
+  "clearMocks": true,
+  "collectCoverage": true,
+  "coverageDirectory": "coverage",
+  "coveragePathIgnorePatterns": ["/node_modules/"],
+  "setupFiles": ["<rootDir>/.jest/setupEnv.ts"],
+  "coverageThreshold": {
+    "global": {
+      "branches": 80,
+      "functions": 80,
+      "lines": 80
+    }
+  }
+}
