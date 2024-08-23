@@ -11,8 +11,8 @@ import {
 import { structApiUrl } from "./utils";
 
 export class StackQuestions {
-  apiUrl: string;
-  type: string = StackOverflowApiType.Questions;
+  private apiUrl: string;
+  private type: string = StackOverflowApiType.Questions;
 
   constructor(url: string) {
     this.apiUrl = url;
