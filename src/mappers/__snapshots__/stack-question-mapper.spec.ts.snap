@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StackQuestionMapper runs 1`] = `
+{
+  "createdDate": 1547025378,
+  "id": 54106638,
+  "link": "demo-link",
+  "score": 1,
+  "tags": [
+    "tag",
+  ],
+  "title": "demo-title",
+  "viewCount": 24,
+}
+`;
