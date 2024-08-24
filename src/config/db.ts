@@ -1,4 +1,7 @@
+import dotenv from "dotenv";
 import { StackDbProps } from "../types/common/config";
+
+dotenv.config();
 
 export const getStackDbProps = (): StackDbProps => {
   const host = process.env.OVERFLOWDESK_DB_HOST || "";
