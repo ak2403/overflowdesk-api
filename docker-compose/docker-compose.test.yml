@@ -1,0 +1,24 @@
+services:
+  overflowdesk-test-db:
+    image: postgres:14.13-alpine
+    container_name: overflowdesk-test-db
+    restart: always
+    ports:
+      - 5430:5432
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=secret
+    volumes:
+      - pgtestdata:/var/lib/postgresql/data
+
+  mocked-stack-api:
+    image: mockoon/cli:8
+    ports:
+      - 3000:3000
+    volumes:
+      - ../mockoon/stack.json:/data:readonly
+    command: ["--data", "data"]
+
+volumes:
+  pgtestdata:
