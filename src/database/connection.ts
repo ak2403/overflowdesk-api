@@ -16,7 +16,7 @@ const authenticateConnection = async (): Promise<boolean> => {
     return true;
   } catch (error) {
     console.log(error);
-
+    //@ts-ignore
     throw new Error(error);
   }
 };
