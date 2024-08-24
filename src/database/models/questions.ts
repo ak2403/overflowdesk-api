@@ -13,24 +13,24 @@ class Question extends Model<
   declare id: string;
   declare body: string;
   declare createdDate: number;
-  declare downVoted: number;
+  declare downVoteCount: number;
   declare lastActivityDate: number;
   declare link: string;
   declare score: number;
   declare title: string;
-  declare upVoted: number;
+  declare upVoteCount: number;
   declare viewCount: number;
 }
 
 Question.init(
   {
     id: { type: DataTypes.STRING, primaryKey: true },
-    body: { type: DataTypes.STRING, allowNull: false },
+    body: { type: DataTypes.TEXT, allowNull: false },
     createdDate: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    downVoted: {
+    downVoteCount: {
       type: DataTypes.INTEGER,
       defaultValue: 0,
     },
@@ -41,7 +41,7 @@ Question.init(
     link: { type: DataTypes.STRING, allowNull: false },
     score: { type: DataTypes.INTEGER, defaultValue: 0 },
     title: { type: DataTypes.STRING, allowNull: false },
-    upVoted: {
+    upVoteCount: {
       type: DataTypes.INTEGER,
       defaultValue: 0,
     },

@@ -7,12 +7,12 @@ export default {
         type: Sequelize.STRING,
         primaryKey: true,
       },
-      body: { type: Sequelize.STRING, allowNull: false },
+      body: { type: Sequelize.TEXT, allowNull: false },
       createdDate: {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
-      downVoted: {
+      downVoteCount: {
         type: Sequelize.INTEGER,
         defaultValue: 0,
       },
@@ -23,7 +23,7 @@ export default {
       link: { type: Sequelize.STRING, allowNull: false },
       score: { type: Sequelize.INTEGER, defaultValue: 0 },
       title: { type: Sequelize.STRING, allowNull: false },
-      upVoted: {
+      upVoteCount: {
         type: Sequelize.INTEGER,
         defaultValue: 0,
       },

@@ -3,13 +3,24 @@ import { StackOverflowQuestion } from "../types/models/stackoverflow";
 
 type PrimaryQuestionProps = Omit<
   StackOverflowQuestion,
-  "owner" | "last_activity_date" | "content_license"
+  "owner" | "content_license"
 >;
 
 export class StackQuestionMapper {
   static transform(question: PrimaryQuestionProps): StackQuestion {
-    const { creation_date, question_id, link, score, tags, title, view_count } =
-      question;
+    const {
+      creation_date,
+      last_activity_date,
+      question_id,
+      link,
+      score,
+      tags,
+      title,
+      up_vote_count,
+      down_vote_count,
+      body,
+      view_count,
+    } = question;
 
     return {
       createdDate: creation_date,
@@ -19,6 +30,10 @@ export class StackQuestionMapper {
       tags,
       title,
       viewCount: view_count,
+      lastActivityDate: last_activity_date,
+      body,
+      upVoteCount: up_vote_count,
+      downVoteCount: down_vote_count,
     };
   }
 }

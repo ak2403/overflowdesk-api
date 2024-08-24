@@ -28,6 +28,9 @@ export type StackOverflowQuestion = {
   tags: string[];
   title: string;
   view_count: number;
+  body: string;
+  up_vote_count: number;
+  down_vote_count: number;
 };
 
 export type StackOverflowQuestionDetail = StackOverflowQuestion & {
