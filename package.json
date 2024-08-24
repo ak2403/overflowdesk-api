@@ -21,6 +21,7 @@
     "@babel/node": "^7.25.0",
     "@babel/preset-env": "^7.25.3",
     "@babel/preset-typescript": "^7.24.7",
+    "@faker-js/faker": "^8.4.1",
     "@mockoon/cli": "^8.4.0",
     "@types/jest": "^29.5.12",
     "@types/node-cron": "^3.0.11",
