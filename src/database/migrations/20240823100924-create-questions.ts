@@ -2,9 +2,10 @@ import { DataTypes, QueryInterface } from "sequelize";
 
 export default {
   async up(queryInterface: QueryInterface, Sequelize: typeof DataTypes) {
-    await queryInterface.createTable("question", {
+    await queryInterface.createTable("questions", {
       id: {
         type: Sequelize.STRING,
+        primaryKey: true,
       },
       createdDate: {
         type: Sequelize.INTEGER,
@@ -24,6 +25,6 @@ export default {
     });
   },
   async down(queryInterface: QueryInterface, Sequelize: typeof DataTypes) {
-    await queryInterface.dropTable("question");
+    await queryInterface.dropTable("questions");
   },
 };

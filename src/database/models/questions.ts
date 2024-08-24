@@ -20,7 +20,7 @@ class Question extends Model<
 
 Question.init(
   {
-    id: DataTypes.STRING,
+    id: { type: DataTypes.STRING, primaryKey: true },
     createdDate: DataTypes.INTEGER,
     link: DataTypes.STRING,
     score: DataTypes.INTEGER,
@@ -30,6 +30,8 @@ Question.init(
   {
     sequelize: databaseConnection,
     modelName: "question",
+    tableName: "questions",
+    timestamps: false,
   }
 );
 
