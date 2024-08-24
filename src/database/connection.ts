@@ -9,4 +9,16 @@ const databaseConnection: Sequelize = new Sequelize(name, username, password, {
   port,
 });
 
-export { databaseConnection };
+const authenticateConnection = async (): Promise<boolean> => {
+  try {
+    await databaseConnection.authenticate();
+
+    return true;
+  } catch (error) {
+    console.log(error);
+
+    throw new Error(error);
+  }
+};
+
+export { authenticateConnection, databaseConnection };
