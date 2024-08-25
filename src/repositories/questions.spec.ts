@@ -68,6 +68,22 @@ describe("QuestionsRepository", () => {
     });
   });
 
+  describe("findAll()", () => {
+    it("returns all questions", async () => {
+      const repo = new QuestionsRepository();
+
+      const result = await repo.findAll({
+        orderBy: {
+          sortBy: "lastActivityDate",
+          desc: true,
+        },
+      });
+
+      expect(result).not.toBeNull();
+      expect(result.length).not.toBe(0);
+    });
+  });
+
   describe("update()", () => {
     const questionToAdd = generateQuestion();
 

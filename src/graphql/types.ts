@@ -28,9 +28,6 @@ export const QuestionType = new GraphQLObjectType({
     viewCount: { type: GraphQLInt },
     tags: {
       type: new GraphQLList(TagType),
-      resolve: (parentValue, args) => {
-        console.log(parentValue, args);
-      },
     },
   },
 });

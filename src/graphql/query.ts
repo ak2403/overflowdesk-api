@@ -1,13 +1,13 @@
 import {
   GraphQLBoolean,
   GraphQLList,
+  GraphQLNonNull,
   GraphQLObjectType,
   GraphQLString,
 } from "graphql";
-import Question from "../database/models/questions";
-import Tag from "../database/models/tags";
-import { QuestionType } from "./types";
+import { QuestionType, TagType } from "./types";
 import { QuestionsRepository } from "../repositories/questions";
+import { TagsRepository } from "../repositories/tags";
 
 export const RootQuery = new GraphQLObjectType({
   name: "RootQueryType",
@@ -15,31 +15,42 @@ export const RootQuery = new GraphQLObjectType({
     questions: {
       type: new GraphQLList(QuestionType),
       args: {
-        descSortByActivity: {
+        sortBy: {
+          type: new GraphQLNonNull(GraphQLString),
+        },
+        desc: {
           type: GraphQLBoolean,
           defaultValue: true,
         },
       },
-      resolve: (parentValue, args) => {
+      resolve: (_parentValue, args) => {
+        const { sortBy, desc } = args;
         const questionsRepository = new QuestionsRepository();
 
-        return questionsRepository.findAll();
+        return questionsRepository.findAll({
+          orderBy: {
+            sortBy,
+            desc,
+          },
+        });
       },
     },
-    question: {
-      type: QuestionType,
+    tags: {
+      type: new GraphQLList(TagType),
       args: {
-        id: {
+        name: {
           type: GraphQLString,
+          defaultValue: "",
         },
       },
-      resolve: (parentValue, args) => {
-        const questions = Question.findOne({
-          where: { id: args.id },
-          include: [{ model: Tag, as: "tags" }],
-        });
+      resolve: (_parentValue, args) => {
+        const { name } = args;
 
-        return questions;
+        return TagsRepository.findAll({
+          searchBy: {
+            name,
+          },
+        });
       },
     },
   },
