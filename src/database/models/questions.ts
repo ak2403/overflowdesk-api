@@ -5,6 +5,8 @@ import {
   InferCreationAttributes,
 } from "sequelize";
 import { databaseConnection } from "../connection";
+import Tag from "./tags";
+import QuestionTag from "./questiontags";
 
 class Question extends Model<
   InferAttributes<Question>,
@@ -54,5 +56,13 @@ Question.init(
     timestamps: false,
   }
 );
+
+Question.belongsToMany(Tag, {
+  through: QuestionTag,
+});
+
+Tag.belongsToMany(Question, {
+  through: QuestionTag,
+});
 
 export default Question;
