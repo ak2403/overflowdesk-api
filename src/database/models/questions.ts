@@ -59,10 +59,12 @@ Question.init(
 
 Question.belongsToMany(Tag, {
   through: QuestionTag,
+  foreignKey: "question_id",
 });
 
 Tag.belongsToMany(Question, {
   through: QuestionTag,
+  foreignKey: "tag_id",
 });
 
 export default Question;

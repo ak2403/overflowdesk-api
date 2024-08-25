@@ -5,9 +5,8 @@ module.exports = {
     await queryInterface.createTable("questiontags", {
       id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
       },
       question_id: {
         type: Sequelize.STRING,

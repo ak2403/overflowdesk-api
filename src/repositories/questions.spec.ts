@@ -98,4 +98,31 @@ describe("QuestionsRepository", () => {
       expect(result).toBeFalsy();
     });
   });
+
+  describe("pushWithTags()", () => {
+    const questionToAdd = generateQuestion();
+
+    it("returns id of valid record", async () => {
+      const repo = new QuestionsRepository();
+
+      const result = await repo.pushWithTags(questionToAdd);
+
+      expect(result).toBeTruthy();
+    });
+
+    it.todo("returns question with tags");
+
+    it.skip("throws error when attempt to add duplicate record", async () => {
+      const repo = new QuestionsRepository();
+
+      try {
+        await repo.push(questionToAdd);
+      } catch (error) {
+        //@ts-ignore
+        expect(error.message).toBe(
+          "SequelizeUniqueConstraintError: Validation error"
+        );
+      }
+    });
+  });
 });

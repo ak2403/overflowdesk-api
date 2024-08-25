@@ -24,6 +24,7 @@ QuestionTag.init(
       type: DataTypes.UUID,
       primaryKey: true,
       unique: true,
+      defaultValue: DataTypes.UUIDV4,
     },
     question_id: {
       type: DataTypes.STRING,
