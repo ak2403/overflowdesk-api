@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OwnerMapper() construct owner for passed attribute values 1`] = `
+{
+  "id": 123,
+  "name": undefined,
+  "profileImage": "sample-link",
+  "profileLink": undefined,
+  "reputation": 1,
+  "userId": 456,
+}
+`;

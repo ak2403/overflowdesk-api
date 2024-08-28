@@ -1,1 +1,1 @@
-export * from "./stack-question-mapper";
+export * from "./question-mapper";

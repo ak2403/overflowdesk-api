@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AnswerMapper() construct answer with passed attribute values 1`] = `
+{
+  "body": "sample body",
+  "commentCount": 2,
+  "createdDate": undefined,
+  "downVoteCount": 1,
+  "id": 123,
+  "isAccepted": undefined,
+  "lastActivityDate": undefined,
+  "link": undefined,
+  "ownerId": undefined,
+  "questionId": 456,
+  "score": 2,
+  "upVoteCount": 2,
+}
+`;

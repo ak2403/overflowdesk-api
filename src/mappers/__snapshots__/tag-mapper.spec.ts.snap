@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TagMapper() construct tag for passed attribute values 1`] = `
+{
+  "id": "123",
+  "name": "sample-tag",
+}
+`;
