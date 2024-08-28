@@ -5,7 +5,7 @@ export type StackOverflowResponse<T> = {
   quota_remaining: number;
 };
 
-export type Owner = {
+export type OwnerResponse = {
   account_id: number;
   display_name: string;
   link: string;
@@ -15,17 +15,19 @@ export type Owner = {
   user_type: string;
 };
 
-export type StackOverflowQuestion = {
+export type TagsResponse = string[];
+
+export type QuestionResponse = {
   answer_count: number;
   content_license: string;
   creation_date: number;
   is_answered: boolean;
   last_activity_date: number;
   link: string;
-  owner: Owner;
+  owner: OwnerResponse;
   question_id: number;
   score: number;
-  tags: string[];
+  tags: TagsResponse;
   title: string;
   view_count: number;
   body: string;
@@ -33,6 +35,6 @@ export type StackOverflowQuestion = {
   down_vote_count: number;
 };
 
-export type StackOverflowQuestionDetail = StackOverflowQuestion & {
+export type QuestionDetailResponse = QuestionResponse & {
   accepted_answer_id: string;
 };
