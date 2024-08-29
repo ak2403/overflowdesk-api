@@ -49,8 +49,4 @@ Owner.init(
   }
 );
 
-Owner.belongsTo(Question, {
-  foreignKey: "ownerId",
-});
-
 export default Owner;

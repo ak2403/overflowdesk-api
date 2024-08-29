@@ -1,8 +1,8 @@
-import { generateRandomLines } from "../helpers/faker/common";
-import { TagsRepository } from "./tags";
+import { generateRandomName } from "../helpers/faker/common";
+import { TagsRepository } from "./tags-repository";
 
 const generateTag = (): { name: string } => ({
-  name: generateRandomLines(),
+  name: generateRandomName(),
 });
 
 describe("TagsRepository", () => {
@@ -27,14 +27,22 @@ describe("TagsRepository", () => {
     it("returns valid tag for existing name", async () => {
       const result = await TagsRepository.findOrpush(tag.name);
 
-      expect(result.dataValues.name).toBe(tag.name);
+      expect(result.name).toBe(tag.name);
     });
 
     it("returns valid tag for a new name", async () => {
       const newTag = generateTag();
       const result = await TagsRepository.findOrpush(newTag.name);
 
-      expect(result.dataValues.name).toBe(newTag.name);
+      expect(result.name).toBe(newTag.name);
+    });
+  });
+
+  describe("findAll()", () => {
+    it("returns list of tags", async () => {
+      const result = await TagsRepository.findAll();
+
+      expect(result.length).not.toBe(0);
     });
   });
 });

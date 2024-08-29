@@ -79,6 +79,10 @@ Question.belongsToMany(Tag, {
 
 Question.hasOne(Owner);
 
+Owner.belongsTo(Question, {
+  foreignKey: "ownerId",
+});
+
 Tag.belongsToMany(Question, {
   through: QuestionTag,
   foreignKey: "tag_id",
