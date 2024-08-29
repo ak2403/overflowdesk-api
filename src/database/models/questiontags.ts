@@ -14,8 +14,8 @@ class QuestionTag extends Model<
   InferCreationAttributes<QuestionTag>
 > {
   declare id: CreationOptional<string>;
-  declare question_id: string;
-  declare tag_id: string;
+  declare questionId: string;
+  declare tagId: string;
 }
 
 QuestionTag.init(
@@ -26,14 +26,14 @@ QuestionTag.init(
       unique: true,
       defaultValue: DataTypes.UUIDV4,
     },
-    question_id: {
+    questionId: {
       type: DataTypes.STRING,
       references: {
         model: Question,
         key: "id",
       },
     },
-    tag_id: {
+    tagId: {
       type: DataTypes.STRING,
       references: {
         model: Tag,

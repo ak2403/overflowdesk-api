@@ -16,11 +16,23 @@ export default {
         type: Sequelize.INTEGER,
         defaultValue: 0,
       },
+      isAnswered: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+      },
       lastActivityDate: {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
       link: { type: Sequelize.STRING, allowNull: false },
+      ownerId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: { tableName: "owners" },
+          key: "id",
+        },
+      },
       score: { type: Sequelize.INTEGER, defaultValue: 0 },
       title: { type: Sequelize.STRING, allowNull: false },
       upVoteCount: {

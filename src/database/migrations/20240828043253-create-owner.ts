@@ -8,12 +8,8 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      userId: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-      },
-      reputation: {
-        type: Sequelize.INTEGER,
+      name: {
+        type: Sequelize.STRING,
         allowNull: false,
       },
       profileImage: {
@@ -23,6 +19,14 @@ module.exports = {
       profileLink: {
         type: Sequelize.STRING,
         allowNull: false,
+      },
+      reputation: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      userId: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
       },
     });
   },

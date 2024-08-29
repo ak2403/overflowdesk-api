@@ -8,27 +8,19 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.STRING,
       },
-      question_id: {
+      questionId: {
         type: Sequelize.STRING,
         references: {
           model: { tableName: "questions" },
           key: "id",
         },
       },
-      tag_id: {
+      tagId: {
         type: Sequelize.STRING,
         references: {
           model: { tableName: "tags" },
           key: "id",
         },
-      },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE,
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE,
       },
     });
   },

@@ -29,6 +29,7 @@ Tag.init(
     sequelize: databaseConnection,
     modelName: "tag",
     tableName: "tags",
+    timestamps: false,
   }
 );
 
