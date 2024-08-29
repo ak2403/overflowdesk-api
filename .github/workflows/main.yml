@@ -43,7 +43,8 @@ jobs:
         run: yarn
 
       - name: run migrations
-        run: npx sequelize-cli db:migrate
+        run: |
+          npx sequelize-cli db:migrate
 
       - name: run tests
         run: yarn test
