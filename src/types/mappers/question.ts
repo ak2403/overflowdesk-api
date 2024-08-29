@@ -3,6 +3,7 @@ export type Question = {
   body: string;
   createdDate: number;
   downVoteCount: number;
+  isAnswered: boolean;
   lastActivityDate: number;
   link: string;
   ownerId: number;

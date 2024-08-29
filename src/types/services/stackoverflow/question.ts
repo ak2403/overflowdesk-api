@@ -19,7 +19,6 @@ export type TagsResponse = string[];
 
 export type QuestionResponse = {
   answer_count: number;
-  content_license: string;
   creation_date: number;
   is_answered: boolean;
   last_activity_date: number;

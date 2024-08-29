@@ -6,6 +6,7 @@ export class QuestionMapper implements Mapper<Question> {
   private _body!: string;
   private _createdDate!: number;
   private _downVoteCount!: number;
+  private _isAnswered!: boolean;
   private _lastActivityDate!: number;
   private _link!: string;
   private _ownerId!: number;
@@ -28,6 +29,10 @@ export class QuestionMapper implements Mapper<Question> {
 
   set downVoteCount(count: number) {
     this._downVoteCount = count;
+  }
+
+  set isAnswered(answered: boolean) {
+    this._isAnswered = answered || false;
   }
 
   set lastActivityDate(date: number) {
@@ -54,6 +59,10 @@ export class QuestionMapper implements Mapper<Question> {
     this._upVoteCount = count;
   }
 
+  set viewCount(count: number) {
+    this._viewCount = count;
+  }
+
   //TODO: throw error if necessary props are missing
   build(): Question {
     return {
@@ -61,6 +70,7 @@ export class QuestionMapper implements Mapper<Question> {
       body: this._body,
       createdDate: this._createdDate,
       downVoteCount: this._downVoteCount,
+      isAnswered: this._isAnswered,
       lastActivityDate: this._lastActivityDate,
       link: this._link,
       ownerId: this._ownerId,
