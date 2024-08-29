@@ -6,7 +6,7 @@ export class QuestionMapper implements Mapper<Question> {
   private _body!: string;
   private _createdDate!: number;
   private _downVoteCount!: number;
-  private _isAnswered!: boolean;
+  private _isAnswered: boolean = false;
   private _lastActivityDate!: number;
   private _link!: string;
   private _ownerId!: number;
@@ -32,7 +32,7 @@ export class QuestionMapper implements Mapper<Question> {
   }
 
   set isAnswered(answered: boolean) {
-    this._isAnswered = answered || false;
+    this._isAnswered = answered;
   }
 
   set lastActivityDate(date: number) {

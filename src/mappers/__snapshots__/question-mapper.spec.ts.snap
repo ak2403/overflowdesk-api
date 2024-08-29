@@ -6,6 +6,7 @@ exports[`QuestionMapper() construct question for passed attribute values 1`] = `
   "createdDate": undefined,
   "downVoteCount": undefined,
   "id": 1,
+  "isAnswered": false,
   "lastActivityDate": undefined,
   "link": "sample-link",
   "ownerId": undefined,
