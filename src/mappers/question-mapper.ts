@@ -9,7 +9,6 @@ export class QuestionMapper implements Mapper<Question> {
   private _isAnswered: boolean = false;
   private _lastActivityDate!: number;
   private _link!: string;
-  private _ownerId!: number;
   private _score!: number;
   private _title!: string;
   private _upVoteCount!: number;
@@ -43,10 +42,6 @@ export class QuestionMapper implements Mapper<Question> {
     this._link = link;
   }
 
-  set ownerId(id: number) {
-    this._ownerId = id;
-  }
-
   set score(score: number) {
     this._score = score;
   }
@@ -73,7 +68,6 @@ export class QuestionMapper implements Mapper<Question> {
       isAnswered: this._isAnswered,
       lastActivityDate: this._lastActivityDate,
       link: this._link,
-      ownerId: this._ownerId,
       score: this._score,
       title: this._title,
       upVoteCount: this._upVoteCount,

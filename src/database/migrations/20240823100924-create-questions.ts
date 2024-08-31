@@ -4,7 +4,7 @@ export default {
   async up(queryInterface: QueryInterface, Sequelize: typeof DataTypes) {
     await queryInterface.createTable("questions", {
       id: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
         primaryKey: true,
       },
       body: { type: Sequelize.TEXT, allowNull: false },
@@ -27,7 +27,7 @@ export default {
       link: { type: Sequelize.STRING, allowNull: false },
       ownerId: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        allowNull: true,
         references: {
           model: { tableName: "owners" },
           key: "id",

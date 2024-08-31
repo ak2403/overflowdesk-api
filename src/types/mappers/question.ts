@@ -6,7 +6,6 @@ export type Question = {
   isAnswered: boolean;
   lastActivityDate: number;
   link: string;
-  ownerId: number;
   score: number;
   title: string;
   upVoteCount: number;

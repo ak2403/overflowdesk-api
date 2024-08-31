@@ -17,10 +17,4 @@ export type FilterOptions = {
   where?: Record<string, object>;
 };
 
-export abstract class Repository<T> {
-  extractFromModel(data: Model): T {
-    const { dataValues } = data;
-
-    return dataValues;
-  }
-}
+export abstract class Repository {}

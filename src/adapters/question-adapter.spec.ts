@@ -33,7 +33,6 @@ describe("QuestionAdapter()", () => {
       "isAnswered",
       "lastActivityDate",
       "link",
-      "ownerId",
       "score",
       "title",
       "upVoteCount",
