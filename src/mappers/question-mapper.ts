@@ -1,6 +1,5 @@
 import { Mapper } from "../types/mappers/mapper";
 import { Question } from "../types/mappers/question";
-import { QuestionResponse } from "../types/services/stackoverflow/question";
 
 export class QuestionMapper implements Mapper<Question> {
   private _id!: number;
@@ -74,39 +73,5 @@ export class QuestionMapper implements Mapper<Question> {
       upVoteCount: this._upVoteCount,
       viewCount: this._viewCount,
     };
-  }
-
-  static transform(
-    response: Omit<QuestionResponse, "tags" | "owner">
-  ): QuestionMapper {
-    const {
-      creation_date,
-      is_answered,
-      last_activity_date,
-      link,
-      question_id,
-      score,
-      title,
-      view_count,
-      body,
-      up_vote_count,
-      down_vote_count,
-    } = response;
-
-    const questionMapper = new QuestionMapper();
-
-    questionMapper.id = question_id;
-    questionMapper.body = body;
-    questionMapper.createdDate = creation_date;
-    questionMapper.downVoteCount = down_vote_count;
-    questionMapper.isAnswered = is_answered;
-    questionMapper.lastActivityDate = last_activity_date;
-    questionMapper.link = link;
-    questionMapper.score = score;
-    questionMapper.title = title;
-    questionMapper.upVoteCount = up_vote_count;
-    questionMapper.viewCount = view_count;
-
-    return questionMapper;
   }
 }

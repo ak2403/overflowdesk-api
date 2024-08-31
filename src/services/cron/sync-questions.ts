@@ -1,9 +1,7 @@
-import { StackQuestionMapper } from "../../mappers/stack-question-mapper";
-import { QuestionsRepository } from "../../repositories/questions";
-import { StackQuestion } from "../../types/mappers/stack-question";
-import { StackOverflowQuestion } from "../../types/models/stackoverflow";
+import { QuestionResponse } from "../../types/services/stackoverflow/question";
 import { SyncQuestionsProps } from "../../types/services/cron";
 import { StackQuestions } from "../stackoverflow";
+import { QuestionsRegistry } from "../../registry/questions-registry";
 
 export class SyncQuestionsCommand {
   private apiProps: SyncQuestionsProps;
@@ -22,38 +20,29 @@ export class SyncQuestionsCommand {
     });
   }
 
-  private transformQuestions(
-    questions: StackOverflowQuestion[]
-  ): StackQuestion[] {
-    return questions.map((question) => StackQuestionMapper.transform(question));
-  }
+  private async syncWithDatabase(question: QuestionResponse): Promise<void> {
+    const questionsRegistry = new QuestionsRegistry();
 
-  private async syncWithDatabase(question: StackQuestion): Promise<void> {
-    const questionsRepository = new QuestionsRepository();
+    const existingQuestion = await questionsRegistry.findById(
+      question.question_id
+    );
 
-    const existed = await questionsRepository.find(String(question.id));
-
-    if (!existed) {
-      questionsRepository.push(question);
+    if (!existingQuestion) {
+      questionsRegistry.create(question);
 
       return;
     }
 
-    if (existed.lastActivityDate !== question.lastActivityDate) {
-      await questionsRepository.update(question);
+    if (existingQuestion.lastActivityDate !== question.last_activity_date) {
+      await questionsRegistry.update(question);
     }
   }
 
   async execute() {
-    const questions = await this.fetchQuestions();
-
-    console.log("fetched questiosn");
-    const transformed = this.transformQuestions(questions.items);
-
-    console.log("Transformed questiosn");
+    const { items: questions } = await this.fetchQuestions();
 
     const pushPromises = Promise.allSettled(
-      transformed.map(this.syncWithDatabase)
+      questions.map(this.syncWithDatabase)
     );
 
     const promisesCompleted = await pushPromises;

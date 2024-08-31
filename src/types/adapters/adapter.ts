@@ -1,3 +1,1 @@
-export interface Adapter<T, K> {
-  transform(data: T): K;
-}
+export interface Adapter<T, K> {}

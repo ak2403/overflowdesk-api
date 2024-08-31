@@ -6,7 +6,7 @@ import { QuestionResponse } from "../types/services/stackoverflow/question";
 export type QuestionParams = Omit<QuestionResponse, "tags" | "owner">;
 
 export class QuestionAdapter implements Adapter<QuestionResponse, Question> {
-  transform(question: QuestionParams): Question {
+  static transform(question: QuestionParams): Question {
     const {
       body,
       creation_date: createdDate,

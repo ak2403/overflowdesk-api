@@ -1,3 +1,6 @@
+import { createTestQuestionPayload } from "../__test_utils/generate-test-question";
+import { createTestStackOwnerResponse } from "../__test_utils/owner";
+import { createTestStackQuestionResponse } from "../__test_utils/question";
 import { QuestionsRegistry } from "./questions-registry";
 
 describe("QuestionsRegistry()", () => {
@@ -24,6 +27,20 @@ describe("QuestionsRegistry()", () => {
         "tags",
         "owner",
       ]);
+    });
+  });
+
+  describe("create()", () => {
+    it("creates new question with tags and owner linked to it", async () => {
+      const questionPayload = createTestStackQuestionResponse();
+
+      const result = await questionsRegistry.create({
+        ...questionPayload,
+        tags: ["tag1"],
+        owner: createTestStackOwnerResponse(),
+      });
+
+      expect(result).not.toBeNull();
     });
   });
 });
