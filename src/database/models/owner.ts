@@ -5,7 +5,6 @@ import {
   DataTypes,
 } from "sequelize";
 import { databaseConnection } from "../connection";
-import Question from "./questions";
 
 class Owner extends Model<
   InferAttributes<Owner>,

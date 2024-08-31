@@ -13,14 +13,14 @@ class Question extends Model<
   InferAttributes<Question>,
   InferCreationAttributes<Question>
 > {
-  declare id: string;
+  declare id: number;
   declare body: string;
   declare createdDate: number;
   declare downVoteCount: number;
   declare isAnswered: boolean;
   declare lastActivityDate: number;
   declare link: string;
-  declare ownerId: number;
+  declare ownerId?: number;
   declare score: number;
   declare title: string;
   declare upVoteCount: number;
@@ -29,7 +29,7 @@ class Question extends Model<
 
 Question.init(
   {
-    id: { type: DataTypes.STRING, primaryKey: true },
+    id: { type: DataTypes.INTEGER, primaryKey: true },
     body: { type: DataTypes.TEXT, allowNull: false },
     createdDate: {
       type: DataTypes.INTEGER,
@@ -50,7 +50,6 @@ Question.init(
     link: { type: DataTypes.STRING, allowNull: false },
     ownerId: {
       type: DataTypes.INTEGER,
-      allowNull: false,
       references: {
         model: Owner,
         key: "id",
@@ -74,18 +73,22 @@ Question.init(
 
 Question.belongsToMany(Tag, {
   through: QuestionTag,
-  foreignKey: "question_id",
-});
-
-Question.hasOne(Owner);
-
-Owner.belongsTo(Question, {
-  foreignKey: "ownerId",
+  foreignKey: "questionId",
 });
 
 Tag.belongsToMany(Question, {
   through: QuestionTag,
-  foreignKey: "tag_id",
+  foreignKey: "tagId",
+});
+
+Question.belongsTo(Owner, {
+  foreignKey: "ownerId",
+  as: "owner",
+});
+
+Owner.hasMany(Question, {
+  foreignKey: "id",
+  as: "questions",
 });
 
 export default Question;

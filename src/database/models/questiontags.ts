@@ -45,6 +45,7 @@ QuestionTag.init(
     sequelize: databaseConnection,
     modelName: "questiontag",
     tableName: "questiontags",
+    timestamps: false,
   }
 );
 
