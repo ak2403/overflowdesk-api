@@ -1,4 +1,7 @@
+import { Op } from "sequelize";
 import { QuestionAdapter } from "../adapters/question-adapter";
+import OwnerModel from "../database/models/owner";
+import TagModel from "../database/models/tags";
 import { QuestionsRepository } from "../repositories/questions-repository";
 import { Question, QuestionWithTagsAndOwner } from "../types/mappers/question";
 import { QueryOptions } from "../types/repositories/repository";
@@ -10,7 +13,13 @@ export class QuestionsRegistry {
   async fetchAll(
     queryOptions: QueryOptions = {}
   ): Promise<QuestionWithTagsAndOwner[]> {
-    const questions = await QuestionsRepository.findAll(queryOptions);
+    const questions = await QuestionsRepository.findAll({
+      ...queryOptions,
+      include: [
+        { model: TagModel, as: "tags" },
+        { model: OwnerModel, as: "owner" },
+      ],
+    });
 
     if (questions === null) {
       return [];
@@ -53,5 +62,32 @@ export class QuestionsRegistry {
     const { ...rest } = question;
 
     return await QuestionsRepository.update(QuestionAdapter.transform(rest));
+  }
+
+  async findByTag(id: string): Promise<Question[]> {
+    const questions = await QuestionsRepository.findAll({
+      include: [
+        {
+          model: TagModel,
+          as: "tags",
+          where: {
+            id: {
+              [Op.eq]: id,
+            },
+          },
+        },
+        {
+          model: OwnerModel,
+          as: "owner",
+        },
+      ],
+      orderBy: { sortBy: "lastActivityDate", desc: true },
+    });
+
+    if (questions === null) {
+      return [];
+    }
+
+    return questions.map((question) => question.toJSON());
   }
 }

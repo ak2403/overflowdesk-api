@@ -1,13 +1,18 @@
-import { Model, Order } from "sequelize";
+import { Order } from "sequelize";
 
 export type QueryOptions = {
+  include?: {
+    as: string;
+    model: any;
+    where?: Record<string, Record<symbol, string>>;
+  }[];
+  limit?: number;
+  offset?: number;
   orderBy?: {
     sortBy: string;
     desc: boolean;
   };
   searchBy?: Record<string, string>;
-  limit?: number;
-  offset?: number;
 };
 
 export type FilterOptions = {
