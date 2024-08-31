@@ -1,5 +1,6 @@
 import { Mapper } from "../types/mappers/mapper";
 import { Owner } from "../types/mappers/owner";
+import { OwnerResponse } from "../types/services/stackoverflow/question";
 
 export class OwnerMapper implements Mapper<Owner> {
   private _accountId!: number;
@@ -31,6 +32,28 @@ export class OwnerMapper implements Mapper<Owner> {
 
   set userId(id: number) {
     this._userId = id;
+  }
+
+  static transform(response: OwnerResponse): OwnerMapper {
+    const {
+      account_id,
+      display_name,
+      link,
+      profile_image,
+      reputation,
+      user_id,
+    } = response;
+
+    const ownerMapper = new OwnerMapper();
+
+    ownerMapper.accountId = account_id;
+    ownerMapper.name = display_name;
+    ownerMapper.profileImage = profile_image;
+    ownerMapper.profileLink = link;
+    ownerMapper.reputation = reputation;
+    ownerMapper.userId = user_id;
+
+    return ownerMapper;
   }
 
   build(): Owner {

@@ -11,7 +11,7 @@ export class OwnerRepository extends Repository {
         return null;
       }
 
-      return owner.dataValues;
+      return owner.toJSON();
     } catch (error) {
       //@ts-ignore
       throw new Error(error);
