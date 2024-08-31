@@ -5,7 +5,7 @@ import {
   GraphQLList,
 } from "graphql";
 
-export const TagType = new GraphQLObjectType({
+export const GraphTagType = new GraphQLObjectType({
   name: "Tag",
   fields: {
     id: { type: GraphQLString },
@@ -13,7 +13,18 @@ export const TagType = new GraphQLObjectType({
   },
 });
 
-export const QuestionType = new GraphQLObjectType({
+export const GraphOwnerType = new GraphQLObjectType({
+  name: "Owner",
+  fields: {
+    id: { type: GraphQLString },
+    name: { type: GraphQLString },
+    profileImage: { type: GraphQLString },
+    profileLink: { type: GraphQLString },
+    reputation: { type: GraphQLString },
+  },
+});
+
+export const GraphQuestionType = new GraphQLObjectType({
   name: "Question",
   fields: {
     id: { type: GraphQLString },
@@ -27,7 +38,10 @@ export const QuestionType = new GraphQLObjectType({
     upVoteCount: { type: GraphQLInt },
     viewCount: { type: GraphQLInt },
     tags: {
-      type: new GraphQLList(TagType),
+      type: new GraphQLList(GraphTagType),
+    },
+    owner: {
+      type: GraphOwnerType,
     },
   },
 });

@@ -17,12 +17,9 @@ export class QuestionsRepository extends Repository {
         ...filterOptions,
       });
 
-      if (questions === null) {
-        return [];
-      }
-
       return questions;
     } catch (error) {
+      //@ts-ignore
       throw new Error(error);
     }
   }

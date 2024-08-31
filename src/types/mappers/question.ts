@@ -1,3 +1,6 @@
+import { Owner } from "./owner";
+import { Tag } from "./tag";
+
 export type Question = {
   id: number;
   body: string;
@@ -11,3 +14,5 @@ export type Question = {
   upVoteCount: number;
   viewCount: number;
 };
+
+export type QuestionWithTagsAndOwner = Question & Tag & Owner;

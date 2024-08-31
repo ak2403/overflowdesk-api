@@ -5,15 +5,15 @@ import {
   GraphQLObjectType,
   GraphQLString,
 } from "graphql";
-import { QuestionType, TagType } from "./types";
-import { QuestionsRepository } from "../repositories/questions";
-import { TagsRepository } from "../repositories/tags";
+import { GraphQuestionType, GraphTagType } from "./types";
+import { TagsRepository } from "../repositories/tags-repository";
+import { QuestionsRegistry } from "../registry/questions-registry";
 
 export const RootQuery = new GraphQLObjectType({
   name: "RootQueryType",
   fields: {
     questions: {
-      type: new GraphQLList(QuestionType),
+      type: new GraphQLList(GraphQuestionType),
       args: {
         sortBy: {
           type: new GraphQLNonNull(GraphQLString),
@@ -25,9 +25,9 @@ export const RootQuery = new GraphQLObjectType({
       },
       resolve: (_parentValue, args) => {
         const { sortBy, desc } = args;
-        const questionsRepository = new QuestionsRepository();
+        const questionsRepository = new QuestionsRegistry();
 
-        return questionsRepository.findAll({
+        return questionsRepository.fetchAll({
           orderBy: {
             sortBy,
             desc,
@@ -36,7 +36,7 @@ export const RootQuery = new GraphQLObjectType({
       },
     },
     tags: {
-      type: new GraphQLList(TagType),
+      type: new GraphQLList(GraphTagType),
       args: {
         name: {
           type: GraphQLString,
