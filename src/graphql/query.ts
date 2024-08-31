@@ -6,8 +6,8 @@ import {
   GraphQLString,
 } from "graphql";
 import { GraphQuestionType, GraphTagType } from "./types";
-import { TagsRepository } from "../repositories/tags-repository";
 import { QuestionsRegistry } from "../registry/questions-registry";
+import { TagRegistry } from "../registry/tag-registry";
 
 export const RootQuery = new GraphQLObjectType({
   name: "RootQueryType",
@@ -23,8 +23,7 @@ export const RootQuery = new GraphQLObjectType({
           defaultValue: true,
         },
       },
-      resolve: (_parentValue, args) => {
-        const { sortBy, desc } = args;
+      resolve: (_parentValue, { desc, sortBy }) => {
         const questionsRepository = new QuestionsRegistry();
 
         return questionsRepository.fetchAll({
@@ -43,10 +42,10 @@ export const RootQuery = new GraphQLObjectType({
           defaultValue: "",
         },
       },
-      resolve: (_parentValue, args) => {
-        const { name } = args;
+      resolve: (_parentValue, { name }) => {
+        const tagRegistry = new TagRegistry();
 
-        return TagsRepository.findAll({
+        return tagRegistry.find({
           searchBy: {
             name,
           },
