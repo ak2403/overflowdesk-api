@@ -4,7 +4,7 @@ import { StackDbProps } from "../types/common/config";
 dotenv.config();
 
 export const getStackDbProps = (): StackDbProps => {
-  const host = process.env.OVERFLOWDESK_DB_HOST || "0.0.0.0";
+  const host = process.env.OVERFLOWDESK_DB_HOST || "host.docker.internal";
   const name = process.env.OVERFLOWDESK_DB_NAME || "postgres";
   const username = process.env.OVERFLOWDESK_DB_USERNAME || "admin";
   const password = process.env.OVERFLOWDESK_DB_PASSWORD || "secret";
